@@ -8,6 +8,69 @@ public class List<E> extends ArrayList<E>
     {
         super();
     }
+    public List(ArrayList<E> list){super(list);}
+    public List(java.util.List<E> l){super(l);}
+    public List(E ... elements){
+        super();
+        
+    }
+    public List(E element){
+        super();
+        add(element);
+    }
+    public List(int size){
+        super(size);
+    }
+    
+    public void addAll(E ... elements){
+        for(E x : elements)
+        {
+            add(x);
+        }
+    }
+    
+    public void addAll(List<E> list){
+        for(E x : list)
+        {
+            add(x);
+        }
+    }
+    
+    public void addAll(java.util.List<E> list){
+        for(E x : list)
+        {
+            add(x);
+        }
+    }
+    
+    public void addAll(ArrayList<E> list){
+        for(E x : list)
+        {
+            add(x);
+        }
+    }
+    
+    public List<E> getRange(int start, int end){
+        List<E> list = new List<E>();
+        for(int i = start; i < end; i++)
+        {
+            list.add(this.get(i));
+        }
+        return list;
+    }
+    
+    public List<E> getRange(int start){
+        return getRange(start, this.size());
+    }
+    
+    public List<E> getRange(int start, int end, int step){
+        List<E> list = new List<E>();
+        for(int i = start; i < end; i+=step)
+        {
+            list.add(this.get(i));
+        }
+        return list;
+    }
     
     public interface Find<E>{
         public boolean match(E e);
