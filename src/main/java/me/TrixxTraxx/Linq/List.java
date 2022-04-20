@@ -29,6 +29,11 @@ public class List<E> extends ArrayList<E>
         }
     }
     
+    public void removeAll(Find<E> find)
+    {
+        removeAll(findAll(find));
+    }
+    
     public void addAll(List<E> list){
         for(E x : list)
         {
