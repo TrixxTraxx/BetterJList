@@ -225,4 +225,16 @@ public class List<E> extends ArrayList<E>
         }
         return list;
     }
+    
+    public <T> List<T> cast(Class<T> clazz){
+        List<T> newList = new List<T>();
+        for(E e : this)
+        {
+            try{
+                newList.add(clazz.cast(e));
+            }
+            catch(ClassCastException ex){}
+        }
+        return newList;
+    }
 }
