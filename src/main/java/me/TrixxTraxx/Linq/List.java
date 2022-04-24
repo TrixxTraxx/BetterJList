@@ -12,7 +12,7 @@ public class List<E> extends ArrayList<E>
     public List(java.util.List<E> l){super(l);}
     public List(E ... elements){
         super();
-        
+        addAll(elements);
     }
     public List(E element){
         super();
@@ -226,12 +226,17 @@ public class List<E> extends ArrayList<E>
         return list;
     }
     
-    public <T> List<T> cast(Class<T> clazz){
+    public interface Cast<T, E>
+    {
+        public T cast(E o);
+    }
+    
+    public <T> List<T> cast(Cast<T, E> cast){
         List<T> newList = new List<T>();
         for(E e : this)
         {
             try{
-                newList.add(clazz.cast(e));
+                newList.add(cast.cast(e));
             }
             catch(ClassCastException ex){}
         }
