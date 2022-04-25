@@ -242,4 +242,20 @@ public class List<E> extends ArrayList<E>
         }
         return newList;
     }
+    
+    public boolean any(Find<E> find){
+        for(E x : this)
+        {
+            if(find.match(x)) return true;
+        }
+        return false;
+    }
+    
+    public boolean all(Find<E> find){
+        for(E x : this)
+        {
+            if(!find.match(x)) return false;
+        }
+        return true;
+    }
 }
